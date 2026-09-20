@@ -7,7 +7,9 @@ from threading import Thread
 import discord
 from discord.ext import commands
 from discord import app_commands
-from moviepy.editor import VideoFileClip
+
+# SỬA LỖI IMPORT MOVIEPY TẠI ĐÂY:
+from moviepy import VideoFileClip
 
 # ==========================================
 # 1. WEB SERVER KẾT HỢP FLASK (ĐỂ RENDER ONLINE 24/7)
@@ -53,12 +55,12 @@ def convert_webm_to_gif(webm_path: str, gif_path: str):
     try:
         # Bước 1: WebM -> MP4
         clip = VideoFileClip(webm_path)
-        clip.write_videofile(temp_mp4, codec="libx264", audio=False, verbose=False, logger=None)
+        clip.write_videofile(temp_mp4, codec="libx264", audio=False)
         clip.close()
 
         # Bước 2: MP4 -> GIF
         mp4_clip = VideoFileClip(temp_mp4)
-        mp4_clip.write_gif(gif_path, verbose=False, logger=None)
+        mp4_clip.write_gif(gif_path)
         mp4_clip.close()
     finally:
         if os.path.exists(temp_mp4):
