@@ -2,4 +2,5 @@ discord.py
 flask
 requests
 moviepy
-pillow
+imageio-ffmpeg
+Pillow
